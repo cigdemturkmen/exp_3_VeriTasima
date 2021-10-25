@@ -1,0 +1,34 @@
+﻿@using exp_3_VeriTasima.Models
+@model Ogrenci
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    @*contollerdan gelen öğrencinin içini doldurmak için MVC HTML HELPER kullandık;*@
+    @using (Html.BeginForm("Add", "Student", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken() //Form güvenliğini sağlıyor.olmazsa ataklara açık olursun
+
+        <label>Ad</label>
+        @Html.TextBoxFor(model => model.Ad)
+
+        <label>Soyad</label>
+        @Html.TextBoxFor(model => model.Soyad)
+
+        <button type="submit">Göndeer</button>
+    }
+
+    @*<form action="/" method="post" class=""></form>
+        <label>Ad</label>
+        <input  name="Soyad" id="Soyad" />*@
+
+</body>
+</html>

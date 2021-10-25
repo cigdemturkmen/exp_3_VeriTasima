@@ -1,0 +1,36 @@
+﻿@using exp_3_VeriTasima.Models
+@model IletisimViewModel 
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Iletisim</title>
+</head>
+<body>
+
+    @*1. yöntem*@
+    @*<h1>@ViewBag.Adres</h1>
+    <ul>
+        @foreach (var item in (List<string>)ViewBag.Bayiler)
+        {
+            <li>@item</li>
+        }
+
+    </ul>*@
+
+    @Model.Adres
+    @Model.Fax
+    @Model.Telefon
+    @foreach (var item in Model.Bayiler)
+    {
+        @item
+    }
+    
+</body>
+</html>
