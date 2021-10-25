@@ -12,7 +12,7 @@
     <title>Edit</title>
 </head>
 <body>
-    @using (Html.BeginForm("Edit","Teacher", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Teacher", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -28,8 +28,11 @@
 
         <br />
 
-        @Html.LabelFor(model => model.Brans)       
-        @Html.DropDownListFor(model => model.Brans, ViewBag.dropdownVD as SelectList)
+        @Html.LabelFor(model => model.Brans)
+        @Html.DropDownList("dropdownVD")
+        //@Html.DropDownListFor(model => model.Brans, ViewBag.dropdownVD as SelectList)
+
+        <button type="submit">Gönder</button>
     }
 </body>
 </html>

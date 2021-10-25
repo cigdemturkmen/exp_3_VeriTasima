@@ -12,7 +12,7 @@ namespace exp_3_VeriTasima.Controllers
 
         List<Teacher> ogretmenler = new List<Teacher>()
         {
-
+            new Teacher { Id=1,Ad="Ali", Soyad="Yılmaz", Brans= Brans.Felsefe}
         };
 
         // GET: Teacher
@@ -37,6 +37,7 @@ namespace exp_3_VeriTasima.Controllers
         [HttpPost]
         public ActionResult Add(Teacher model)
         {
+            model.Id = ogretmenler.Max(x => x.Id) + 1;
             ogretmenler.Add(model);
             return RedirectToAction("List");
         }
