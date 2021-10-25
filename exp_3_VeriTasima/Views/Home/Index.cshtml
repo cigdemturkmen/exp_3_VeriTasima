@@ -3,7 +3,7 @@
 @{
     Layout = null;
 
-    var yil = DateTime.Now.Year; //sadece basit işlemleri buraya yazarız. daaha complex işlemleri controllerda yaparız
+    var yil = DateTime.Now.Year; //sadece basit işlemleri buraya(view'a) yazarız. daha complex işlemleri controllerda yaparız(CRUD işlemlerini)
 }
 
 <!DOCTYPE html>
@@ -12,10 +12,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    @*View'larda using otomatik gelmez, elle yazmak gerekir. ve başına @yazmayı da unutma.*@
+    @*View'larda using otomatik gelmez, elle yazmak gerekir. ve başına @yazmayı da unutma. using otomatik gelmez çünkü burası bir cs dosyası değil html dosyası(cshtml)*@
 </head>
 <body>
-    <h1>@ViewData["AdSoyad"]</h1> @*1. taşıma yöntemi.*@
+    <h1>@ViewData["AdSoyad"]</h1> @*1. veri taşıma yöntemi.Controller'daki veriyi View'a taşıdık.*@
 
     <p>@TempData["Fiyat"]</p>
 

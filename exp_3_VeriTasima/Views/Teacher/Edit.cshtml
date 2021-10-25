@@ -1,5 +1,5 @@
 ﻿@using exp_3_VeriTasima.Models
-@model Ogrenci
+@model Teacher
 @{
     Layout = null;
 }
@@ -12,23 +12,24 @@
     <title>Edit</title>
 </head>
 <body>
-    @using (Html.BeginForm("Edit", "Student", FormMethod.Post))
+    @using (Html.BeginForm("Edit","Teacher", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         @Html.HiddenFor(model => model.Id)
 
-        @Html.LabelFor(model => model.Ad) @*<label>Ad</label>*@
+        @Html.LabelFor(model => model.Ad)
         @Html.TextBoxFor(model => model.Ad)
 
         <br />
 
-        @Html.LabelFor(model => model.Soyad) @*<label>Soyad</label>*@
+        @Html.LabelFor(model => model.Soyad)
         @Html.TextBoxFor(model => model.Soyad)
 
         <br />
 
-        <input type="submit" value="Güncelle"/>
+        @Html.LabelFor(model => model.Brans)       
+        @Html.DropDownListFor(model => model.Brans, ViewBag.dropdownVD as SelectList)
     }
 </body>
 </html>

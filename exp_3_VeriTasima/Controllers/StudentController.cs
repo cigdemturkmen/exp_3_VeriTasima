@@ -9,40 +9,32 @@ namespace exp_3_VeriTasima.Controllers
 {
     public class StudentController : Controller
     {
-        //student crud student controller'da olur. herkesin crudu kendi controller'ında olur.
-        static List<Ogrenci> ogrList = new List<Ogrenci>() // burası static olmak zorunda veri tabanını işin içine katmadığımız için.
+        //student CRUD student controller'da yapılır. Herkesin CRUDu kendi Controller'ında olur.
+        static List<Ogrenci> ogrList = new List<Ogrenci>() // globale tanımladık. Burası static olmak zorunda veri tabanını işin içine katmadığımız için.
         {
-             new Ogrenci()
-                {
-                 Id=1,
-                    Ad="Leyla",
-                    Soyad="Taş"
-                },
-                new Ogrenci()
-                {
-                    Id=2,
-                    Ad="Çiğdem",
-                    Soyad="Türkmen"
-                },
+             new Ogrenci(){Id=1,Ad="Leyla", Soyad="Taş"},
+             new Ogrenci(){Id=2, Ad="Çiğdem", Soyad="Türkmen"},
         };
 
-        // GET: Student
-        public ActionResult Index()
+        #region Öğrenci Listeleme İşlemi
+        public ActionResult List()
         {
-            return View();
-        }
+            // Veritabanından öğrencileri getiriyoruz.
+            return View(ogrList);
+        } 
+        #endregion
 
         #region Öğrenci Ekleme İşlemleri
-        //kendiliğinden get metodu ile çalışır bu attributu yazmasan da http:veri transfer protokolü. diğer http metodlarını çalış mülakat...
-        [HttpGet]
+        [HttpGet] // kendiliğinden get metodu ile çalışır bu attributu yazmasan da. HTTP:veri transfer protokolü
         public ActionResult Add()
         {
+            
             //var benzersizId = Guid.NewGuid();
             var model = new Ogrenci();
             return View(model);
         }
 
-        [HttpPost] // http metodları: get post put patch  delete. web api'de daha sık kullanılıyolar. mülakatta sorulur
+        [HttpPost] // diğer http metodlarını çalış. http metodları: get post put patch delete. WEB API'da daha sık kullanılıyolar. Mülakatta sorulur!
         public ActionResult Add(Ogrenci model)
         {
             //veritabanı işlemleri burada tamamlanır
@@ -53,17 +45,9 @@ namespace exp_3_VeriTasima.Controllers
 
         #endregion
 
-        //model yöntemiyle iki taraflı aktarım yapılabiliriyor. yani hem view'dan controller'a hem controller'dan view'a.
+        //model yöntemiyle iki taraflı veri taşıma yapılabiliriyor. Yani hem View'dan Controller'a hem Controller'dan View'a.
 
         #region Güncelleme İşlemleri
-        public ActionResult List()
-        {
-            // Veritabanından öğrencileri getiriyoruz.
-
-            return View(ogrList);
-
-        }
-
         public ActionResult Edit(int id) // bu sayfa sadece id verildiğinde açılır.
         {
             var ogrenci = ogrList.FirstOrDefault(x => x.Id == id);
@@ -96,9 +80,9 @@ namespace exp_3_VeriTasima.Controllers
                 ogrList.Remove(ogrenci);
             }
             return RedirectToAction("List");
-        } 
+        }
         #endregion
 
-        //web apı'deki viewler başka bir teknoloji ile oluşturuluyor, onda viewlar yok.
+        //WEB API'daki viewler başka bir teknoloji ile oluşturuluyor, onda viewlar yok.
     }
 }

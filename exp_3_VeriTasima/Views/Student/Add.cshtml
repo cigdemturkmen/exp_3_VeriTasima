@@ -1,5 +1,6 @@
 ﻿@using exp_3_VeriTasima.Models
 @model Ogrenci
+
 @{
     Layout = null;
 }
@@ -12,19 +13,21 @@
     <title>Add</title>
 </head>
 <body>
-    @*contollerdan gelen öğrencinin içini doldurmak için MVC HTML HELPER kullandık;*@
+
+    @*Contollerdan gelen öğrencinin içini formdan gelen verilerle doldurmak için MVC HTML HELPER kullandık;*@
     @using (Html.BeginForm("Add", "Student", FormMethod.Post))
     {
         @Html.AntiForgeryToken() //Form güvenliğini sağlıyor.olmazsa ataklara açık olursun
 
-        <label>Ad</label>
+        <label>Ad</label> // @Html.LabelFor(model => model.Ad) böyle de yazılır. böyle yaz.
         @Html.TextBoxFor(model => model.Ad)
 
         <label>Soyad</label>
         @Html.TextBoxFor(model => model.Soyad)
 
-        <button type="submit">Göndeer</button>
+        <button type="submit">Gönder</button>
     }
+
 
     @*<form action="/" method="post" class=""></form>
         <label>Ad</label>

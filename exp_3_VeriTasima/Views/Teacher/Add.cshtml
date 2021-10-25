@@ -1,0 +1,35 @@
+﻿@using exp_3_VeriTasima.Models
+@model Teacher
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+
+
+    @using (@Html.BeginForm("Add", "Teacher", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+
+        @Html.LabelFor(model => model.Ad)
+        @Html.TextBoxFor(model => model.Ad)
+        <br />
+        @Html.LabelFor(model => model.Soyad)
+        @Html.TextBoxFor(model => model.Soyad)
+
+        <br />
+        @Html.LabelFor(model => model.Brans)       
+        @Html.DropDownListFor(model => model.Brans, ViewBag.dropdownVD as SelectList)
+
+        <button type="submit">Gönder</button>
+    }
+
+</body>
+</html>
