@@ -10,7 +10,7 @@ namespace exp_3_VeriTasima.Controllers
     public class TeacherController : Controller
     {
 
-        List<Teacher> ogretmenler = new List<Teacher>()
+        static List<Teacher> ogretmenler = new List<Teacher>()
         {
             new Teacher { Id=1,Ad="Ali", Soyad="Yılmaz", Brans= Brans.Felsefe}
         };
